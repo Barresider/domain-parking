@@ -14,6 +14,10 @@ jobs:
   build:
     runs-on: [self-hosted, linux, x64]
 
+    defaults:
+       run:
+         working-directory: ./web/
+
     strategy:
       matrix:
         node-version: [16.x]
@@ -21,8 +25,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          path: ./web
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
